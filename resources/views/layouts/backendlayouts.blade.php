@@ -200,9 +200,6 @@
                         <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                <a href="{{ url('/home') }}"><i class="icon-speedometer"></i>Dashboard</a>
-                            </li>
-                            <li class="has-submenu">
                                 <a href="{{ url('/') }}"><i class="icon-speedometer"></i>Visit Website</a>
                             </li>
 
@@ -222,6 +219,7 @@
                                    <li>
                                        <ul>
                                            <li><a href="{{ url('/customer/message') }}">Messages</a></li>
+                                           <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }} New Admin</a>
                                        </ul>
                                    </li>
                                </ul>

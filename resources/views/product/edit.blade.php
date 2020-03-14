@@ -17,12 +17,12 @@
               @endif
 
               <div class="card-body">
-                <form action="{{ url('edit/product/insert') }}" method="post">
+                <form action="{{ url('edit/product/insert') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                       <label>Product Name</label>
                       <input type="hidden" class="form-control" name="product_id" value="{{ $edit_products->id }}">
-                      <input type="text" class="form-control" name="product_name" placeholder="Enter email" value="{{ $edit_products->product_name }}">
+                      <input type="text" class="form-control" name="product_name" placeholder="Enter Product Name" value="{{ $edit_products->product_name }}">
                     </div>
                     <div class="form-group">
                       <label>Product Description</label>

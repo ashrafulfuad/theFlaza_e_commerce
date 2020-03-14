@@ -14,7 +14,7 @@ class ProductController extends Controller
     function addproductview()
     {
       $categories = Category::all();
-      $products = Product::paginate(5);
+      $products = Product::orderBy('id', 'desc')->paginate(5);
       $colors = Color::all();
       $deleted_products = Product::onlyTrashed()->get();
       return view('product/view', compact('products', 'deleted_products', 'categories', 'colors'));
@@ -71,21 +71,26 @@ class ProductController extends Controller
     }
     function editproductinsert(Request $request)
     {
-    $product_id = Product::findOrFail($request->product_id)->update([
+    Product::findOrFail($request->product_id)->update([
         'product_name' => $request->product_name,
         'product_description' => $request->product_description,
         'product_price' => $request->product_price,
         'product_quantity' => $request->product_quantity,
         'alert_quantity' => $request->alert_quantity,
       ]);
-        if($request->hasFile('product_photo')){
-      $product_photo = $request->file('product_photo');
-      $filename = time() . '.' . $product_photo->getClientOriginalExtension();
-      Image::make($product_photo)->resize(394, 451)->save( base_path('public/uploads/product_photos/' . $filename ),60 );
-      Product::find($product_id)->update([
-        'product_photo' => $filename,
-      ]);
-    }
+      $product_id = Product::findOrFail($request->product_id)->id;
+      $photo_name_in_db = Product::findOrFail($request->product_id)->product_photo;
+      if($request->hasFile('product_photo')){
+        if ($photo_name_in_db != 'dflt.jpg') {
+          unlink(base_path('public/uploads/product_photos/' . $photo_name_in_db ));
+        }
+        $product_photo = $request->file('product_photo');
+        $filename = time() . '.' . $product_photo->getClientOriginalExtension();
+        Image::make($product_photo)->resize(394, 451)->save( base_path('public/uploads/product_photos/' . $filename ), 60 );
+        Product::find($product_id)->update([
+          'product_photo' => $filename
+        ]);
+      }
       return back()->with('product_edited', 'Product Edited Successfully!');
     }
 }

@@ -119,7 +119,7 @@
                       <div class="form-group">
                         <label>Product Name</label>
                         <input type="hidden" class="form-control" name="product_id">
-                        <input type="text" class="form-control" name="product_name" placeholder="Enter email" value="{{ old('product_name') }}">
+                        <input type="text" class="form-control" name="product_name" placeholder="Enter Product Name" value="{{ old('product_name') }}">
                       </div>
                       <div class="form-group">
                         <label>Category Name</label>

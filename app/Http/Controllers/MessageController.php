@@ -25,7 +25,7 @@ class MessageController extends Controller
     return back()->with('status', 'Message Sent Successfully!');
   }
   function customermessage(){
-    $all_message = Message::all();
+    $all_message = Message::orderBy('id', 'desc')->paginate(10);
     return view('message/view', compact('all_message'));
   }
   function messageread(Request $request){

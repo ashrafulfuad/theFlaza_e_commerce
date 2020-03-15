@@ -118,7 +118,7 @@
 						<div class="product-info">
 							<h6>{{ $value->product_name }}</h6>
 							<p>${{ $value->product_price }}</p>
-							<a href="#" class="site-btn btn-line">ADD TO CART</a>
+							<a href="{{ url('product') }}/{{ $value->id }}" class="site-btn btn-line">ADD TO CART</a>
 						</div>
 					</div>
 				</div>

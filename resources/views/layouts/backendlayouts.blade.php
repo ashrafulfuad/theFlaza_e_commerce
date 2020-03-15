@@ -224,6 +224,7 @@
                                    </li>
                                </ul>
                            </li>
+                           <li class="has-submenu"><a href="{{ route('customers') }}">Customers</a></li>
 
                         </ul>
                         <!-- End navigation menu -->

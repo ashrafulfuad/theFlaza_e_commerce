@@ -67,3 +67,7 @@ Route::get('customer/message', 'MessageController@customermessage');
 Route::get('message/read/{message_id}', 'MessageController@messageread');
 Route::get('message/view/{message_id}', 'MessageController@messageview');
 Route::get('message/delete/{message_id}', 'MessageController@messagedelete');
+
+
+// All links for vue.js starting
+Route::get('/customers', 'CustomerController')->name('customers');
